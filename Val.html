@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Nehahahaha 💕</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffd6e0, #fcbad3);
+    text-align: center;
+    color: white;
+}
+
+/* MAIN TEXT */
+h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 3.2em;
+    margin-top: 15vh;
+    padding: 0 20px;
+}
+
+p {
+    font-size: 1.5em;
+}
+
+.buttons {
+    margin-top: 40px;
+    position: relative;
+}
+
+button {
+    font-size: 1.5em;
+    padding: 18px 40px;
+    border: none;
+    border-radius: 50px;
+    margin: 15px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#yesBtn {
+    background: white;
+    color: #ff4d88;
+    font-weight: bold;
+    transform: scale(1);
+}
+
+#noBtn {
+    position: absolute;
+    background: #ff4d88;
+    color: white;
+}
+
+/* CELEBRATION SCREEN */
+#celebrationScreen {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+}
+
+.fadeIn {
+    animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+.bigMessage {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.8em;
+}
+
+.personalMessage {
+    font-size: 1.4em;
+    margin-top: 20px;
+    max-width: 85%;
+}
+
+.lock {
+    font-size: 3em;
+    margin-top: 20px;
+    animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+/* Floating elements */
+.floating {
+    position: fixed;
+    pointer-events: none;
+    animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(110vh) scale(0.6);
+        opacity: 0;
+    }
+    10% { opacity: 1; }
+    100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<h1>BAAYYBBAAYYY 💕<br>
+Will you be my Valentine this year<br>
+and for many many many years to come?</h1>
+
+<p>You + Me + Forever 🌸</p>
+
+<div class="buttons">
+    <button id="yesBtn">YES 💖</button>
+    <button id="noBtn">NO</button>
+</div>
+
+<div id="celebrationScreen">
+    <div class="bigMessage">BABY SAID YESSSS!!! EEEEE AAAHHHH AHHHHH💕</div>
+
+    <div class="personalMessage">
+        BABAAYYYY I LOVE YOU SOOOO MUCH!!!<br>
+        Hope you liked this! MUUAAAAHHH!! 💋💕
+    </div>
+
+    <div class="lock">💖🔒 Forever Locked In 🔒💖</div>
+</div>
+
+<!-- Royalty-Free Romantic Guitar -->
+<audio id="bgMusic" preload="auto">
+<source src="elvis.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const celebrationScreen = document.getElementById("celebrationScreen");
+const bgMusic = document.getElementById("bgMusic");
+
+let yesScale = 1;
+
+/* NO runs + YES grows */
+noBtn.addEventListener("mouseover", () => {
+    noBtn.style.top = Math.random() * 300 + "px";
+    noBtn.style.left = Math.random() * 300 + "px";
+    yesScale += 0.15;
+    yesBtn.style.transform = `scale(${yesScale})`;
+});
+
+/* YES clicked */
+yesBtn.addEventListener("click", () => {
+    celebrationScreen.style.display = "flex";
+    setTimeout(() => {
+        celebrationScreen.classList.add("fadeIn");
+    }, 50);
+
+    bgMusic.volume = 0.5;
+    bgMusic.play();
+
+    startFloating("💖", 120);
+    startFloating("🌸", 80);
+});
+
+/* Random floating generator */
+function startFloating(symbol, amount) {
+    for (let i = 0; i < amount; i++) {
+        setTimeout(() => {
+            const el = document.createElement("div");
+            el.className = "floating";
+            el.innerHTML = symbol;
+            el.style.left = Math.random() * 100 + "vw";
+            el.style.fontSize = (Math.random() * 20 + 20) + "px";
+            el.style.animationDuration = (Math.random() * 5 + 4) + "s";
+            document.body.appendChild(el);
+
+            setTimeout(() => el.remove(), 9000);
+        }, Math.random() * 6000);
+    }
+}
+</script>
+
+</body>
+</html>
